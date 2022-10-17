@@ -1,0 +1,54 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+    <div class="container"><br>
+
+        <hr><h2 style="display: inline-block;">Categorias</h2>
+        <a class="btn btn-success" href="/admin/categories/new" style="margin: 0 0 11px 7px ;">Nova categoria</a>
+        <hr>
+        
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Slug</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(category => { %>
+                    <tr>
+                        <td><%= category.id %></td>
+                        <td><%= category.title %></td>
+                        <td><%= category.slug %></td>
+                        <td class="acao">
+                            <style>td.acao form{display: inline;}</style>
+
+                            <form action="/admin/categories/edit/<%= category.id %> " method="GET">
+                                <button class="btn btn-warning text-white">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </form>
+                            <form action="/categories/delete" method="POST" onsubmit="confirDelete(event, this)">
+                                <input type="hidden" name="id" value="<%= category.id %>">
+                                <button class="btn btn-danger"><i class="fa-solid fa-x"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %> 
+            </tbody>
+        </table>
+    </div><!--container-->
+<%- include ('../../../partials/body.ejs') %>
+
+
+<script>
+    function confirDelete(event, form){
+        event.preventDefault()
+
+        let decision = confirm('Você quer deletar essa categoria?')
+        if(decision){
+            form.submit()
+        }
+    }
+</script>

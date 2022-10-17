@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    /*
+    background-color: #ebebeb;
+    */
+    background-color: #dfdfdf;
+}
+
+textarea.form-control{
+    height: 250px !important;
+    border: 1px solid rgba(48, 48, 48, 0.219);
+}
+
+.card{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-header{
+    color: white;
+    background-color: rgb(32, 103, 209);
+}
+
+.card-body{
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(32, 103, 209);
+    background-color: rgb(218, 218, 218);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+li{
+    padding: 0 3px;
+}
